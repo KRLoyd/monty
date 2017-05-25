@@ -54,5 +54,9 @@ global_t *globals;
 
 int check_args(int argc);
 int make_struct();
-
+char **parse(char **buff);
+char **parse_check(char **buff);
+char *strdup(const char *s);
+char *strtok(char *str, const char *delim);
+void (*find_func(int fileline, char *tok_args))(char **tok_args, int fileline);
 #endif/* MONTY_H */
