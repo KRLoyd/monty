@@ -5,7 +5,7 @@
  * @argv: arguments passed
  * Return: integer
  */
-int main(int argc, char *argv[]__attribute__((unused)))
+int main(int argc, char *argv[])
 {
 	int check;
 	FILE *my_file;
@@ -38,10 +38,11 @@ int main(int argc, char *argv[]__attribute__((unused)))
 		tok_args = parse(buff);
 		if (globals->err_val == EXIT_FAILURE)
 			break;
-		func = find_func(fileline, tok_args[0]);
+		/*added void(*func) vs func = and that fixed compiling*/
+		func = find_func(fileline, tok_args);
 		if (globals->err_val > 0)
 			break;
-/* 		func(tok_args[1], fileline); */
+/* 		func(tok_args[0], fileline); */
 	}
 	/*free buff, getline, stack, all the things */
 	printf("Main: return is next\n");
