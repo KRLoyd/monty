@@ -8,12 +8,12 @@
 int main(int argc, char *argv[])
 {
 	int check;
-	struct stack_t **stack = NULL;
+        stack_t **stack = NULL;
 	FILE *my_file;
 	char **tok_args = NULL;
 	char **buff = NULL;
 	void (*func)(stack_t **stack, unsigned int line_number);
-	int fileline = 0;
+	unsigned int fileline = 0;
 
 
 	/* printf("Main: first comment, before make_struct\n"); */
@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
 		func = find_func(fileline, tok_args);
 		if (globals->err_val > 0)
 		  break;
- 		func(**stack, fileline);
+ 		func(stack, fileline);
 	}
 	/*free buff, getline, stack, all the things */
 	printf("Main: return is next\n");
