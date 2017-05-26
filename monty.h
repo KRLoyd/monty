@@ -59,4 +59,11 @@ char **parse_check(char **buff);
 char *strdup(const char *s);
 char *strtok(char *str, const char *delim);
 void (*find_func(int fileline, char *tok_args))(char **tok_args, int fileline);
+void push_val(int push_val, unsigned int line_number);
+unsigned int stack_len(stack_t *stack);
+
+void op_push(stack_t **stack, unsigned int line_number);
+
+int _isdigit(int c);
+void check_push_val(int push_val, unsigned int line_number);
 #endif/* MONTY_H */
