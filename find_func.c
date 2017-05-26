@@ -21,7 +21,7 @@ void (*find_func(unsigned int fileline, char **tok_args))(stack_t **stack, unsig
     
   for(i = 0; ops[i].opcode != NULL; i++)
     {
-      if(tok_args[0] == ops[i].opcode)
+      if(strcmp(tok_args[0], ops[i].opcode) == 0)
 	return(ops[i].f);
     }
   if (ops[i].opcode == NULL)
