@@ -39,10 +39,10 @@ int main(int argc, char *argv[])
 		if (globals->err_val == EXIT_FAILURE)
 			break;
 		/*added void(*func) vs func = and that fixed compiling*/
-		void (*func) = find_func(fileline, tok_args[0]);
+		func = find_func(fileline, tok_args);
 		if (globals->err_val > 0)
 			break;
-/* 		func(tok_args[1], fileline); */
+/* 		func(tok_args[0], fileline); */
 	}
 	/*free buff, getline, stack, all the things */
 	printf("Main: return is next\n");

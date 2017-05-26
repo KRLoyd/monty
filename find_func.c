@@ -4,7 +4,7 @@
  *
  *
  */
-void (*find_func(unsigned int fileline, char *tok_args))(unsigned int fileline,stack_t **stack)
+void (*find_func(unsigned int fileline, char **tok_args))(stack_t **stack, unsigned int fileline)
 {
   instruction_t ops[] = {
     /*    {"push", op_push},*/
@@ -21,7 +21,7 @@ void (*find_func(unsigned int fileline, char *tok_args))(unsigned int fileline,s
     
   for(i = 0; ops[i].opcode != NULL; i++)
     {
-      if(tok_args == ops[i].opcode)
+      if(tok_args[0] == ops[i].opcode)
 	return(ops[i].f);
     }
   if (ops[i].opcode == NULL)
