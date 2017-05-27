@@ -4,30 +4,27 @@
  *
  *
  */
-char **parse(char **buff)
+char **parse(char *buff)
 {
 	char *delim = "\n \t\r\f";
 	char *token;
 	char **tok_args;
 	size_t i = 0;
 
-	printf("parse: before parse_check\n");
+
 	tok_args = parse_check(buff);
-	printf("parse: after parse_check\n");
 	if (globals->err_val == EXIT_FAILURE)
 		return NULL;
-	printf("parse: tok_args set\n");
-	token = strtok(*buff, delim);
-	printf("parse: before while loop\n");
+	token = strtok(buff, delim);
 	while (token != NULL)
 	{
-		printf("parse: in while loop\n");
 		tok_args[i] = strdup(token);
-		i++;
+		printf("\tparse: tok_args[%lu]: %s\n", i, tok_args[i]); 
+
 		token = strtok(NULL, delim);
+		i++;
 	}
-	printf("parse: after while loop\n");
-	tok_args[i] = NULL;
-	printf("parse: right above return\n");
+	/* tok_args[i] = NULL; */
+	/* printf("\tparse: tok_args[%lu]: %s\n", i, tok_args[i]); */
 	return (tok_args);
 }

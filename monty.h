@@ -3,6 +3,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <ctype.h>
+/* temporary until we create own strcmp */
+#include <string.h>
+
 #define BUFFSIZE 1024
 /* add library for exit function */
 
@@ -53,9 +57,12 @@ extern global_t *globals;
 global_t *globals;
 
 int check_args(int argc);
+
+void convert_push_arg(char *tok_args, int fileline);
 int make_struct();
-char **parse(char **buff);
-char **parse_check(char **buff);
+char **parse(char *buff);
+char **parse_check(char *buff);
+/* int strcmp(const char *s1, const char s2); */
 char *strdup(const char *s);
 char *strtok(char *str, const char *delim);
 
@@ -71,6 +78,7 @@ void check_push_val(int push_val, unsigned int line_number);
 void (*find_func(unsigned int fileline, char **tok_args))(stack_t ** stack, unsigned int line_number);
 void (*func(void))(stack_t **stack, unsigned int line_number);
 void op_pall(stack_t **stack, unsigned int fileline);
+void op_pop(stack_t **stack, unsigned int fileline);
 unsigned int stack_len(stack_t *stack);
 
 #endif/* MONTY_H */

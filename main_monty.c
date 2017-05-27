@@ -8,32 +8,34 @@
 int main(int argc, char *argv[])
 {
 	int check;
-        stack_t **stack = NULL;
+	size_t len;
+        stack_t *stack = NULL;
 	FILE *my_file;
 	char **tok_args = NULL;
-	char **buff = NULL;
+	char *buff = NULL;
 	void (*func)(stack_t **stack, unsigned int line_number);
 	unsigned int fileline = 0;
 
-
-	/* printf("Main: first comment, before make_struct\n"); */
 	/* allocate memory for the global struct */
 	check = make_struct();
 	if (check > 0)
 		exit(EXIT_FAILURE);
-	/* printf("Main: before err_val set\n"); */
 	/* initialize globals->err_val and globals->push_val */
 	globals->err_val = EXIT_SUCCESS;
 	globals->push_val = 0;
-	/* printf("Main: err_val and push_val set\n"); */
 	
 	if (check_args(argc) > 0)
 	{
-		printf("Main: Inside check args if\n");
 		exit(EXIT_FAILURE);
 	}
 	my_file = fopen(argv[1], "r");
-	while (getline(buff, 0, my_file) != -1)
+	if (my_file == NULL)
+	{
+		printf("Error: Can't open file %s\n", argv[1]);
+		globals->err_val = EXIT_FAILURE;
+		exit(EXIT_FAILURE);
+	}
+	while ((getline(&buff, &len, my_file) != -1) && 1)
 	{
 		fileline += 1;
 		tok_args = parse(buff);
@@ -42,9 +44,13 @@ int main(int argc, char *argv[])
 		func = find_func(fileline, tok_args);
 		if (globals->err_val > 0)
 		  break;
- 		func(stack, fileline);
+		printf("Main: right before opcode called\n");
+ 		func(&stack, fileline);
+
 	}
 	/*free buff, getline, stack, all the things */
+	
 	printf("Main: return is next\n");
-	return (globals->err_val);
+	free(buff);
+	exit(globals->err_val);
 }

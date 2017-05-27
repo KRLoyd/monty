@@ -6,10 +6,17 @@
  */
 unsigned int stack_len(stack_t *stack)
 {
-  stack_t *ptr;
-  unsigned int total = 0;
+	stack_t *ptr;
+	unsigned int total = 0;
+	
+	if (stack == NULL)
+		return (total);
 
-  for(ptr = stack; ptr != NULL; ptr = ptr->next)
-    total++;
-  return(total);
+	ptr = stack;
+	while (ptr != NULL)
+	{
+		total++;
+		ptr = ptr->next;
+	}
+	return (total);
 }
