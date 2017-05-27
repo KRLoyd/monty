@@ -79,6 +79,7 @@ void (*find_func(unsigned int fileline, char **tok_args))(stack_t ** stack, unsi
 void (*func(void))(stack_t **stack, unsigned int line_number);
 void op_pall(stack_t **stack, unsigned int fileline);
 void op_pop(stack_t **stack, unsigned int fileline);
+void op_pint(stack_t **stack, unsigned int fileline);
 unsigned int stack_len(stack_t *stack);
 
 #endif/* MONTY_H */

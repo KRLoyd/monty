@@ -16,9 +16,11 @@ void op_pop(stack_t **stack, unsigned int line_number)
 		return;
 	}
 	ptr = *stack;
-	ptr->next->prev = NULL;
+	if (ptr->next != NULL)
+	{		
+		ptr->next->prev = NULL;
+	}
 	*stack = ptr->next;
-
-	printf("pop: ptr-> n: %d", ptr->n);
 	free(ptr);
+	return;
 }
