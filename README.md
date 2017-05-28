@@ -12,7 +12,7 @@ All code is written in Betty style. Information about this style can be found at
 Protoypes of all functions used are included in header file `monty.h`
 ### Monty Language Notes
 Monty 0.98 is a scripting language that is first compiled into Monty byte codes.
-Monty relies on a unique stack, with specific instructions to manipulate it. 
+Monty relies on a unique stack, with specific instructions to manipulate it.
 
 ## How to use monty
 1. Clone the repository: `$ git clone https://github.com/KRLoyd/monty.git`
@@ -49,7 +49,7 @@ Header file with prototypes for all functions and structs used in the interprete
 ### `FILES`
 
 ## Limitations
-Currently, monty does not have comment handling capability. 
+Currently, monty does not have comment handling capability.
 
 ## Bugs
 There are no known bugs at this time.

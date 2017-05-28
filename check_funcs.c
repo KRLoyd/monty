@@ -1,5 +1,20 @@
 #include "monty.h"
 /**
+ *
+ *
+ *
+ */
+int check_args(int argc)
+{
+	if (argc != 2)
+	{
+		printf("USAGE: monty file\n");
+		globals->err_val = 1;
+	}
+	return globals->err_val;
+}
+
+/**
  * check_push_val - checks push_val
  * @push_val: integer to be evaluated
  *
