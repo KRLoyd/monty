@@ -7,7 +7,6 @@
  */
 int main(int argc, char *argv[])
 {
-	global_t *globals;
 	int check, exit_val;
 	size_t len;
 	stack_t *stack = NULL;
