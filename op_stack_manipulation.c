@@ -10,7 +10,7 @@ void op_push(stack_t **stack, unsigned int line_number)
 	stack_t *new;
 	int isdigit_result;
 
-	if (stack == NULL)
+	if (*stack == NULL)
 	{
 		printf("Error: stack is NULL\n");
 		globals->err_val = EXIT_FAILURE;
