@@ -67,7 +67,7 @@ char *strtok(char *str, const char *delim);
 void push_val(int push_val, unsigned int line_number);
 
 
-void op_push(stack_t **stack, unsigned int line_number);
+
 
 int _isdigit(int c);
 void check_push_val(int push_val, unsigned int line_number);
@@ -76,9 +76,16 @@ void (*find_func(unsigned int fileline, char **tok_args))(stack_t ** stack, unsi
 void free_pointers(char **ptr);
 void free_stack(stack_t **stack);
 void (*func(void))(stack_t **stack, unsigned int line_number);
+void op_push(stack_t **stack, unsigned int line_number);
 void op_pall(stack_t **stack, unsigned int fileline);
 void op_pop(stack_t **stack, unsigned int fileline);
 void op_pint(stack_t **stack, unsigned int fileline);
+void op_add(stack_t **stack, unsigned int fileline);
+void op_div(stack_t **stack, unsigned int fileline);
+void op_mod(stack_t **stack, unsigned int fileline);
+void op_swap(stack_t **stack, unsigned int fileline);
+void op_mul(stack_t **stack, unsigned int fileline);
+
 unsigned int stack_len(stack_t *stack);
 
 #endif/* MONTY_H */
