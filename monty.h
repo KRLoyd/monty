@@ -76,6 +76,7 @@ int _isdigit(int c);
 void check_push_val(int push_val, unsigned int line_number);
 
 void (*find_func(unsigned int fileline, char **tok_args))(stack_t ** stack, unsigned int line_number);
+void free_stack(stack_t **stack);
 void (*func(void))(stack_t **stack, unsigned int line_number);
 void op_pall(stack_t **stack, unsigned int fileline);
 void op_pop(stack_t **stack, unsigned int fileline);

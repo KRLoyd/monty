@@ -46,11 +46,9 @@ int main(int argc, char *argv[])
 		  break;
 		printf("Main: right before opcode called\n");
  		func(&stack, fileline);
-
 	}
 	/*free buff, getline, stack, all the things */
-	
-	printf("Main: return is next\n");
 	free(buff);
+	free_stack(&stack);
 	exit(globals->err_val);
 }
