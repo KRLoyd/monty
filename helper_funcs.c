@@ -9,7 +9,6 @@ void convert_push_arg(char *tok_arg, int fileline)
 {
 	int atoi_result;
 
-
 	if (tok_arg == NULL)
 	{
 		printf("L%d: usage: push integer\n", fileline);
