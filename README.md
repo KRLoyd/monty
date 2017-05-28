@@ -36,18 +36,16 @@ To run a file containing Monty byte codes:
 * `div`: divides the second top element of the stack by the top element of the stack
 * `mul`: multiplies the second top element of the stack with the top element fo the stack
 * `mod`: computes the rest of the division of the second top element of the stack by the top element of the stack
-* `pchar`: prints the char at the top of the stack
-* `pstr`: prints the string starting at the top of the stack
-* `rotl`: rotates the stack to the top (top becomes last, second top becomes top)
-* `rotr`: rotates the stack to the bottom (last element becomes top)
-* `stack`: sets the format of the data to a stack (LIFO)
-* `queue`: set the format of the data to a queue (FIFO)
 
 ## Files
 ### `monty.h`
 Header file with prototypes for all functions and structs used in the interpreter.
 ### `FILES`
-
+* `main_monty.c`: the ``main_monty`` function from which all other files' execution originates.
+* `check_funcs.c`: includes:
+  * `check_args`: function to check if arguments are passed
+  * `check_push_val`: function to assess if `push` argument is an integer
+*   
 ## Limitations
 Currently, monty does not have comment handling capability.
 
@@ -57,7 +55,7 @@ If a bug is encountered, please contact one of the authors, listed below.
 
 ## Authors
 * Kristen Loyd, <a href='https://github.com/KRLoyd'>Github</a>
-* Naomi Sorell, <a href='https://github.com/NamoDawn'>Github</a>
+* Naomi Sorrell, <a href='https://github.com/NamoDawn'>Github</a>
 
 ## License
 Public Domain, no copywrite protection
