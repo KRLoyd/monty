@@ -63,10 +63,11 @@ unsigned int stack_len(stack_t *stack)
 /**
  * find_func - finds the correct function for op_code specified
  * @fileline: line number where op_code was in the file passed to monty
- * @tok_args: array of tokens, the first is checked
  *
+ * Return: op_code function (SUCCESS), NULL (FAILURE)
  */
-void (*find_func(unsigned int fileline, char **tok_args))(stack_t **stack, unsigned int fileline)
+void (*find_func(unsigned int fileline, char **tok_args))(stack_t **stack,
+unsigned int fileline)
 {
 	instruction_t ops[] = {
 		{"push", op_push},
@@ -92,7 +93,7 @@ void (*find_func(unsigned int fileline, char **tok_args))(stack_t **stack, unsig
 			{
 				convert_push_arg(tok_args[1], fileline);
 				if (globals->err_val == EXIT_FAILURE)
-					return;
+					return (NULL);
 			}
 			return (ops[i].f);
 		}
@@ -101,6 +102,6 @@ void (*find_func(unsigned int fileline, char **tok_args))(stack_t **stack, unsig
 	{
 		printf("L %d: unknown instruction %s", fileline, tok_args[0]);
 		globals->err_val = EXIT_FAILURE;
-		return;
+		return (NULL);
 	}
 }
