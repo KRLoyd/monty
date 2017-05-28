@@ -5,7 +5,7 @@
 #include <unistd.h>
 #include <ctype.h>
 #include <string.h>
-#define BUFFSIZE 20
+#define BUFFSIZE 200
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -73,6 +73,7 @@ int _isdigit(int c);
 void check_push_val(int push_val, unsigned int line_number);
 
 void (*find_func(unsigned int fileline, char **tok_args))(stack_t ** stack, unsigned int line_number);
+void free_everything(char *buff, stack_t **stack);
 void free_pointers(char **ptr);
 void free_stack(stack_t **stack);
 void (*func(void))(stack_t **stack, unsigned int line_number);
@@ -83,8 +84,10 @@ void op_pint(stack_t **stack, unsigned int fileline);
 void op_add(stack_t **stack, unsigned int fileline);
 void op_div(stack_t **stack, unsigned int fileline);
 void op_mod(stack_t **stack, unsigned int fileline);
+void op_nop(stack_t **stack, unsigned int fileline);
 void op_swap(stack_t **stack, unsigned int fileline);
 void op_mul(stack_t **stack, unsigned int fileline);
+void op_sub(stack_t **stack, unsigned int fileline);
 
 unsigned int stack_len(stack_t *stack);
 

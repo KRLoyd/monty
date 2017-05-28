@@ -13,10 +13,11 @@ void (*find_func(unsigned int fileline, char **tok_args))(stack_t **stack, unsig
 		{"pop", op_pop},
 		{"swap", op_swap},
 		{"add", op_add},
-/*		{"nop", op_nop}, */
+		{"nop", op_nop},
 		{"div", op_div},
 		{"mod", op_mod},
 		{"mul", op_mul},
+		{"sub", op_sub},
 		{NULL, NULL}
 	};
 	int i;
@@ -36,7 +37,7 @@ void (*find_func(unsigned int fileline, char **tok_args))(stack_t **stack, unsig
 	}
 	if (ops[i].opcode == NULL)
 	{
-		printf("L %d: unknown instruction %s", fileline, ops[i].opcode);
+		printf("L %d: unknown instruction %s", fileline, tok_args[0]);
 		globals->err_val = EXIT_FAILURE;
 		return NULL; /* is this right? what we wanted? */
 	}
