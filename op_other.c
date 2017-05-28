@@ -9,6 +9,8 @@ void op_pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *ptr = NULL;
 
+	if ((stack == NULL) || (*stack == NULL))
+		return;
 /* line_number is used to find number of nodes in the stack */
 	line_number = stack_len(*stack);
 	if (line_number == 0)
@@ -27,7 +29,7 @@ void op_pall(stack_t **stack, unsigned int line_number)
  */
 void op_pint(stack_t **stack, unsigned int line_number)
 {
-	if (*stack == NULL)
+	if ((stack == NULL) || (*stack == NULL))
 	{
 		printf("L%d: can't pint, stack empty\n", line_number);
 		globals->err_val = EXIT_FAILURE;

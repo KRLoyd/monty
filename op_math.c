@@ -11,7 +11,7 @@ void op_add(stack_t **stack, unsigned int line_number)
 {
 	stack_t *ptr;
 
-	if ((*stack == NULL) || (stack_len(*stack) < 2))
+	if ((stack == NULL) || (*stack == NULL) || (stack_len(*stack) < 2))
 	{
 		printf("L%d: can't add, stack too short\n", line_number);
 		globals->err_val = EXIT_FAILURE;
@@ -38,7 +38,7 @@ void op_sub(stack_t **stack, unsigned int line_number)
 {
 	stack_t *ptr;
 
-	if ((*stack == NULL) || (stack_len(*stack) < 2))
+	if ((stack == NULL) || (*stack == NULL) || (stack_len(*stack) < 2))
 	{
 		printf("L%d: can't sub, stack too short\n", line_number);
 		globals->err_val = EXIT_FAILURE;
@@ -66,7 +66,7 @@ void op_mul(stack_t **stack, unsigned int line_number)
 {
 	stack_t *ptr;
 
-	if ((*stack == NULL) || (stack_len(*stack) < 2))
+	if ((stack == NULL) || (*stack == NULL) || (stack_len(*stack) < 2))
 	{
 		printf("L%d: can't mul, stack too short\n", line_number);
 		globals->err_val = EXIT_FAILURE;
@@ -93,7 +93,7 @@ void op_div(stack_t **stack, unsigned int line_number)
 {
 	stack_t *ptr;
 
-	if ((*stack == NULL) || (stack_len(*stack) < 2))
+	if ((stack == NULL) || (*stack == NULL) || (stack_len(*stack) < 2))
 	{
 		printf("L%d: can't div, stack too short\n", line_number);
 		globals->err_val = EXIT_FAILURE;
@@ -125,7 +125,7 @@ void op_mod(stack_t **stack, unsigned int line_number)
 {
 	stack_t *ptr;
 
-	if ((*stack == NULL) || (stack_len(*stack) < 2))
+	if ((stack == NULL) || (*stack == NULL) || (stack_len(*stack) < 2))
 	{
 		printf("L%d: can't mod, stack too short\n", line_number);
 		globals->err_val = EXIT_FAILURE;

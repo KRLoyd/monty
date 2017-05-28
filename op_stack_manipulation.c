@@ -54,7 +54,7 @@ void op_pop(stack_t **stack, unsigned int line_number)
 {
 	stack_t *ptr;
 
-	if (*stack == NULL)
+	if ((stack == NULL) || (*stack == NULL))
 	{
 		printf("L%d: can't pop an empty stack\n", line_number);
 		globals->err_val = EXIT_FAILURE;
@@ -80,7 +80,7 @@ void op_swap(stack_t **stack, unsigned int line_number)
 	stack_t *ptr;
 	int temp;
 
-	if ((*stack == NULL) || (stack_len(*stack) < 2))
+	if ((stack == NULL) || (*stack == NULL) || (stack_len(*stack) < 2))
 	{
 		printf("L%d: can't swap, stack too short\n", line_number);
 		globals->err_val = EXIT_FAILURE;
