@@ -45,7 +45,6 @@ int main(int argc, char *argv[])
 		if (globals->err_val == EXIT_FAILURE)
 			break;
 	}
-	fclose(my_file);
-	exit_val = globals->err_val;
+	fclose(my_file); exit_val = globals->err_val;
 	free_everything(buff, &stack); exit(exit_val);
 }
