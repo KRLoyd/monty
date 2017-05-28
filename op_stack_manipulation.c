@@ -43,7 +43,6 @@ void op_push(stack_t **stack, unsigned int line_number)
 	*stack = new;
 }
 
-#include "monty.h"
 /**
  * op_pop - prints the value at the top of the stack
  * @stack: stack to evaluate
