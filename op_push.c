@@ -14,8 +14,6 @@ void op_push(stack_t **stack, unsigned int line_number)
 /* add error here */
 		printf("stack is NULL\n"); 
 
-	printf("op_push: before err_val check\n");
-
 	isdigit_result = isdigit(globals->push_val);
 	if (isdigit_result != 0)
 	{

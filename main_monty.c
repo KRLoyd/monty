@@ -8,6 +8,7 @@
 int main(int argc, char *argv[])
 {
 	int check;
+	int exit_val, i;
 	size_t len;
         stack_t *stack = NULL;
 	FILE *my_file;
@@ -42,13 +43,15 @@ int main(int argc, char *argv[])
 		if (globals->err_val == EXIT_FAILURE)
 			break;
 		func = find_func(fileline, tok_args);
+		printf("%s", tok_args[1]);
 		if (globals->err_val > 0)
 		  break;
-		printf("Main: right before opcode called\n");
  		func(&stack, fileline);
 	}
-	/*free buff, getline, stack, all the things */
-	free(buff);
+      	free(buff);
+	exit_val = globals->err_val;
+      	free(globals);
+	free_pointers(tok_args);
 	free_stack(&stack);
-	exit(globals->err_val);
+	exit(exit_val);
 }

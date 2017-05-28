@@ -4,11 +4,8 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <ctype.h>
-/* temporary until we create own strcmp */
 #include <string.h>
-
-#define BUFFSIZE 1024
-/* add library for exit function */
+#define BUFFSIZE 20
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -76,6 +73,7 @@ int _isdigit(int c);
 void check_push_val(int push_val, unsigned int line_number);
 
 void (*find_func(unsigned int fileline, char **tok_args))(stack_t ** stack, unsigned int line_number);
+void free_pointers(char **ptr);
 void free_stack(stack_t **stack);
 void (*func(void))(stack_t **stack, unsigned int line_number);
 void op_pall(stack_t **stack, unsigned int fileline);
