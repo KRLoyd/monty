@@ -104,4 +104,5 @@ unsigned int fileline)
 		globals->err_val = EXIT_FAILURE;
 		return (NULL);
 	}
+	return (NULL);
 }
