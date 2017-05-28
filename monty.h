@@ -51,6 +51,7 @@ typedef struct global_s
 } global_t;
 
 extern global_t *globals;
+global_t *globals;
 
 int check_args(int argc);
 void convert_push_arg(char *tok_args, int fileline);
