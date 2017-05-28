@@ -32,6 +32,8 @@ int main(int argc, char *argv[])
 	while ((getline(&buff, &len, my_file) != -1) && 1)
 	{
 		fileline += 1;
+		if (strcmp(buff, "\n") == 0)
+			continue;
 		tok_args = parse(buff);
 		if (globals->err_val == EXIT_FAILURE)
 			break;
