@@ -8,7 +8,7 @@
 int main(int argc, char *argv[])
 {
 	int check;
-	int exit_val, i;
+	int exit_val;
 	size_t len;
         stack_t *stack = NULL;
 	FILE *my_file;
@@ -43,11 +43,14 @@ int main(int argc, char *argv[])
 		if (globals->err_val == EXIT_FAILURE)
 			break;
 		func = find_func(fileline, tok_args);
-		printf("%s", tok_args[1]);
-		if (globals->err_val > 0)
+		if (globals->err_val == EXIT_FAILURE)
 		  break;
  		func(&stack, fileline);
+		if (globals->err_val == EXIT_FAILURE)
+		  break;
+		free_pointers(tok_args);
 	}
+      	fclose(my_file);
       	free(buff);
 	exit_val = globals->err_val;
       	free(globals);

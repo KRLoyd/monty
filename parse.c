@@ -19,12 +19,10 @@ char **parse(char *buff)
 	while (token != NULL)
 	{
 		tok_args[i] = strdup(token);
-		printf("\tparse: tok_args[%lu]: %s\n", i, tok_args[i]); 
-
 		token = strtok(NULL, delim);
 		i++;
 	}
-	/*	tok_args[i] = NULL;*/
+	tok_args[i] = NULL;
 	/* printf("\tparse: tok_args[%lu]: %s\n", i, tok_args[i]); */
 	return (tok_args);
 }
