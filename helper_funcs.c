@@ -1,8 +1,8 @@
 #include "monty.h"
 /**
- * convert_push_arg - 
- *
- *
+ * convert_push_arg - converts string to integer
+ * @tok_arg: the string to convert
+ * @fileline: line the op_code was found in the file passed to monty
  *
  */
 void convert_push_arg(char *tok_arg, int fileline)
@@ -17,25 +17,16 @@ void convert_push_arg(char *tok_arg, int fileline)
 		return;
 	}
 	atoi_result = atoi(tok_arg);
-	/* isdigit_result = isdigit(atoi_result); */
-	/* printf("convert: atoi_result: %d\n", atoi_result); */
-	/* if (isdigit_result != 0) */
-	/* { */
-	/* printf("L%d: usage: push integer\n", fileline); */
-	/* globals->err_val = EXIT_FAILURE; */
-	/* return; */
-	/* } */
 	globals->push_val = atoi_result;
-	return;
 }
 
 /**
  * make_struct - mallocs space for global_s struct
- * 
+ *
  * Return: 0 (SUCCESS), 1 (FAILURE)
  */
 
-int make_struct()
+int make_struct(void)
 {
 	globals = malloc(sizeof(struct global_s));
 	if (globals == NULL)
@@ -44,18 +35,19 @@ int make_struct()
 		return (1);
 	}
 	return (0);
-} 
+}
 
 /**
  * stack_len - finds the number of nodes in a stack_t list
  * @stack: doubly linked list to evaluate
+ *
  * Return: length of stack_t list
  */
 unsigned int stack_len(stack_t *stack)
 {
 	stack_t *ptr;
 	unsigned int total = 0;
-	
+
 	if (stack == NULL)
 		return (total);
 
@@ -69,8 +61,9 @@ unsigned int stack_len(stack_t *stack)
 }
 
 /**
- *
- *
+ * find_func - finds the correct function for op_code specified
+ * @fileline: line number where op_code was in the file passed to monty
+ * @tok_args: array of tokens, the first is checked
  *
  */
 void (*find_func(unsigned int fileline, char **tok_args))(stack_t **stack, unsigned int fileline)
@@ -90,25 +83,24 @@ void (*find_func(unsigned int fileline, char **tok_args))(stack_t **stack, unsig
 		{NULL, NULL}
 	};
 	int i;
-    
-	for(i = 0; ops[i].opcode != NULL; i++)
+
+	for (i = 0; ops[i].opcode != NULL; i++)
 	{
-		if(strcmp(tok_args[0], ops[i].opcode) == 0)
+		if (strcmp(tok_args[0], ops[i].opcode) == 0)
 		{
 			if (i == 0)
 			{
 				convert_push_arg(tok_args[1], fileline);
 				if (globals->err_val == EXIT_FAILURE)
-					return NULL;
+					return;
 			}
-			return(ops[i].f);
+			return (ops[i].f);
 		}
 	}
 	if (ops[i].opcode == NULL)
 	{
 		printf("L %d: unknown instruction %s", fileline, tok_args[0]);
 		globals->err_val = EXIT_FAILURE;
-		return NULL; /* is this right? what we wanted? */
+		return;
 	}
-	return NULL;
 }

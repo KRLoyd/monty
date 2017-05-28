@@ -1,18 +1,21 @@
 #include "monty.h"
 /**
  * op_push - pushes an element to the stack
- * @stack - doubly linked list of integers
- * @line_number - line of the .txt file passed to monty
+ * @stack: doubly linked list of integers
+ * @line_number: line of the .txt file passed to monty
  *
  */
 void op_push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new;
 	int isdigit_result;
-	
+
 	if (stack == NULL)
-/* add error here */
-		printf("stack is NULL\n"); 
+	{
+		printf("Error: stack is NULL\n");
+		globals->err_val = EXIT_FAILURE;
+		return;
+	}
 
 	isdigit_result = isdigit(globals->push_val);
 	if (isdigit_result != 0)
@@ -64,7 +67,6 @@ void op_pop(stack_t **stack, unsigned int line_number)
 	}
 	*stack = ptr->next;
 	free(ptr);
-	return;
 }
 
 /**
@@ -88,5 +90,4 @@ void op_swap(stack_t **stack, unsigned int line_number)
 	temp = (*stack)->n;
 	(*stack)->n = ptr->n;
 	ptr->n = temp;
-	return;
 }

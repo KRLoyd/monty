@@ -1,8 +1,8 @@
 #include "monty.h"
 /**
- *
- *
- *
+ * free_everything - calls all free functions
+ * @buff: char pointer to free
+ * @stack: doubly linked list to free
  *
  */
 void free_everything(char *buff, stack_t **stack)
@@ -20,7 +20,7 @@ void free_everything(char *buff, stack_t **stack)
 void free_pointers(char **ptr)
 {
 	int i;
-  
+
 	for (i = 0; ptr[i] != NULL; i++)
 	{
 		free(ptr[i]);
@@ -29,14 +29,14 @@ void free_pointers(char **ptr)
 }
 
 /**
- *
- *
+ * free_stack - frees a doubly linked list
+ * @stack: doubly linked list to free
  *
  */
 void free_stack(stack_t **stack)
 {
 	stack_t *tmp;
-  
+
 	if (stack == NULL)
 		return;
 	while (*stack != NULL)

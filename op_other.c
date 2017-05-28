@@ -1,7 +1,9 @@
 #include "monty.h"
 /**
  * op_pall - print all the values on the stack
- * 
+ * @stack: doubly linked list
+ * @line_number: line number where op_code is located in file passed to monty
+ *
  */
 void op_pall(stack_t **stack, unsigned int line_number)
 {
@@ -9,20 +11,18 @@ void op_pall(stack_t **stack, unsigned int line_number)
 
 /* line_number is used to find number of nodes in the stack */
 	line_number = stack_len(*stack);
-	if(line_number == 0)
+	if (line_number == 0)
 		return;
-	for(ptr = *stack; ptr != NULL; ptr = ptr->next)
+	for (ptr = *stack; ptr != NULL; ptr = ptr->next)
 	{
 		printf("%d\n", ptr->n);
 	}
-	return;
 }
 
 /**
- *
- *
- *
- *
+ * op_pint - prints the value at the top of the stack
+ * @stack: doubly linked list
+ * @line_number: line number where op_code is located in file passed to monty
  *
  */
 void op_pint(stack_t **stack, unsigned int line_number)
@@ -36,7 +36,6 @@ void op_pint(stack_t **stack, unsigned int line_number)
 	}
 	printf("pint: after stack check, before access\n");
 	printf("%d\n", (*stack)->n);
-	return;
 }
 
 /**

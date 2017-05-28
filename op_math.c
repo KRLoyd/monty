@@ -19,12 +19,8 @@ void op_add(stack_t **stack, unsigned int line_number)
 	}
 
 	ptr = (*stack)->next;
-
 	(*stack)->n += ptr->n;
-
 	(*stack)->next = ptr->next;
-
-	
 	if (ptr->next != NULL)
 		ptr->next->prev = *stack;
 	free(ptr);
@@ -52,7 +48,7 @@ void op_sub(stack_t **stack, unsigned int line_number)
 	ptr = (*stack)->next;
 	(*stack)->n = ptr->n - (*stack)->n;
 	(*stack)->next = ptr->next;
-  
+
 	if (ptr->next != NULL)
 		ptr->next->prev = *stack;
 	free(ptr);

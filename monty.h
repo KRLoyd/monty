@@ -18,9 +18,9 @@
  */
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
 } stack_t;
 
 /**
@@ -33,8 +33,8 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-        char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
+	char *opcode;
+	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
 /**
@@ -45,34 +45,25 @@ typedef struct instruction_s
  */
 typedef struct global_s
 {
-        int err_val;
+	int err_val;
 	int push_val;
 	/* char s_or_q; */
 } global_t;
 
 extern global_t *globals;
-global_t *globals;
 
 int check_args(int argc);
-
 void convert_push_arg(char *tok_args, int fileline);
-int make_struct();
+int make_struct(void);
 char **parse(char *buff);
 char **parse_check(char *buff);
-/* int strcmp(const char *s1, const char s2); */
 char *strdup(const char *s);
 char *strtok(char *str, const char *delim);
-
-
 void push_val(int push_val, unsigned int line_number);
-
-
-
-
 int _isdigit(int c);
 void check_push_val(int push_val, unsigned int line_number);
-
-void (*find_func(unsigned int fileline, char **tok_args))(stack_t ** stack, unsigned int line_number);
+void (*find_func(unsigned int fileline,
+		 char **tok_args))(stack_t **stack, unsigned int line_number);
 void free_everything(char *buff, stack_t **stack);
 void free_pointers(char **ptr);
 void free_stack(stack_t **stack);
@@ -88,7 +79,5 @@ void op_nop(stack_t **stack, unsigned int fileline);
 void op_swap(stack_t **stack, unsigned int fileline);
 void op_mul(stack_t **stack, unsigned int fileline);
 void op_sub(stack_t **stack, unsigned int fileline);
-
 unsigned int stack_len(stack_t *stack);
-
 #endif/* MONTY_H */

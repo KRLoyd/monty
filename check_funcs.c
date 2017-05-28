@@ -1,22 +1,24 @@
 #include "monty.h"
 /**
+ * check_args - checks that 1 file was passed to monty
+ * @argc: number of arguments
  *
- *
- *
+ * Return: 0 (SUCCESS), 1 (FAILURE)
  */
 int check_args(int argc)
 {
 	if (argc != 2)
 	{
 		printf("USAGE: monty file\n");
-		globals->err_val = 1;
+		globals->err_val = EXIT_FAILURE;
 	}
-	return globals->err_val;
+	return (globals->err_val);
 }
 
 /**
  * check_push_val - checks push_val
  * @push_val: integer to be evaluated
+ * @line_number: lone the op_code was found in the file passed to monty
  *
  * Description: checks if push_val exists and is an integer
  */

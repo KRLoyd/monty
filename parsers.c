@@ -1,8 +1,9 @@
 #include "monty.h"
 /**
+ * parse - creates an array of strings from a string
+ * @buff: string to break into tokens
  *
- *
- *
+ * Return: array of tokens (SUCCESS), NULL (FAILURE)
  */
 char **parse(char *buff)
 {
@@ -11,10 +12,9 @@ char **parse(char *buff)
 	char **tok_args;
 	size_t i = 0;
 
-
 	tok_args = parse_check(buff);
 	if (globals->err_val == EXIT_FAILURE)
-		return NULL;
+		return (NULL);
 	token = strtok(buff, delim);
 	while (token != NULL)
 	{
@@ -23,20 +23,19 @@ char **parse(char *buff)
 		i++;
 	}
 	tok_args[i] = NULL;
-	/* printf("\tparse: tok_args[%lu]: %s\n", i, tok_args[i]); */
 	return (tok_args);
 }
 
 /**
+ * parse_check - makes sure buff is not NULL and mallocs space for tok_args
+ * @buff: string to check
  *
- *
- *
+ * Return: double pointer to tok_args (SUCCESS), NULL (FAILURE)
  */
 char **parse_check(char *buff)
 {
 	char **tok_args;
-	
-	/* don't forget to free tok_args! (In main) */
+
 	if (buff == NULL)
 	{
 		printf("ERROR: cannot parse buff\n");
@@ -53,5 +52,5 @@ char **parse_check(char *buff)
 			globals->err_val = EXIT_FAILURE;
 		}
 	}
-	return(tok_args);
+	return (tok_args);
 }
